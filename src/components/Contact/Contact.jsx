@@ -10,7 +10,7 @@ const Contact = () => {
       id="testmonials"
       className="bg-[#f8f8f8c0] dark:bg-[#1E1E1E] mt-14 py-24"
     >
-      <section className="container p-4 mx-auto flex lg:flex-col gap-14 items-center">
+      <section className="container p-4 mx-auto flex flex-row-reverse lg:flex-col gap-14 items-center">
         <form className="flex flex-col w-full lg:w-1/2">
           <input
             className="p-4 rounded-md dark:bg-[#303030]"
