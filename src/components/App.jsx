@@ -41,7 +41,7 @@ function App() {
   useEffect(() => {
     setTimeout(() => {
       setContentLoaded(false);
-    }, 1000);
+    }, 3000);
   }, []);
 
   return (
