@@ -33,7 +33,7 @@ const navLinks = [
 ];
 
 function App() {
-  const [dark, setDark] = useState(false);
+  const [theme, setTheme] = useState(localStorage.getItem("theme"));
   const [contentLoaded, setContentLoaded] = useState(true);
 
   const loaderRef = useRef(null);
@@ -44,10 +44,14 @@ function App() {
     }, 3000);
   }, []);
 
+  useEffect(() => {
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
   return (
-    <div className={`${dark ? "dark" : ""} `}>
+    <div className={`${theme === "dark" ? "dark" : ""} `}>
       <div className="dark:bg-[#1E1E1E] relative min-h-screen dark:text-white">
-        <Header navLinks={navLinks} theme={{ dark, setDark }} />
+        <Header navLinks={navLinks} activeTheme={{ theme, setTheme }} />
         <main>
           <Hero />
           <Services />
@@ -62,9 +66,9 @@ function App() {
 
         <div
           ref={loaderRef}
-          className={`w-screen  items-center justify-center h-screen fixed right-0 top-0 bg-white z-50 ${
+          className={`w-screen  items-center justify-center h-screen fixed right-0 top-0 z-50 ${
             contentLoaded ? "flex" : "hidden"
-          }`}
+          } ${theme === "dark" ? "bg-[#1E1E1E]" : "bg-white"}`}
         >
           <RotatingLines
             strokeColor="grey"
